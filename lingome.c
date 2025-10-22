@@ -5,8 +5,21 @@ void hitme(){
     printf("hitme()\n");
 }
 
-void add(){
-    printf("add()\n");
+void addv(){
+    printf("addv()\n");
+}
+
+void addn(){
+    printf("addn\n");
+
+    FILE *lanlib;
+    lanlib = fopen("nounlibrary.txt","w");
+
+    fprintf(lanlib, "This is a noun");
+
+
+
+    fclose(lanlib);
 }
 
 void verb(){
@@ -26,8 +39,11 @@ int main(int argc, char *argv[]){
     if (argc == 1){
         hitme();
 
-    } else if (strcmp(argv[1],"add")==0){
-        add();
+    } else if (strcmp(argv[1],"addv")==0){
+        addv();
+
+    } else if (strcmp(argv[1],"addn")==0){
+        addn();
 
     } else if (strcmp(argv[1],"verb")==0){
         verb();
