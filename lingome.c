@@ -13,21 +13,25 @@ void addn(char *inputs[], int numOfInputs){
 
     printf("addn\n");
 
-    FILE *lanlib;
-    lanlib = fopen("nounlibrary.txt","a");
-    
-    fprintf(lanlib, "\n");
-    for (int i = 0; i<numOfInputs;i++){
-        fprintf(lanlib, inputs[i]);
-        fprintf(lanlib, ", ");
+    if (numOfInputs == 4){
+
+        FILE *nounlib;
+        nounlib = fopen("nounlibrary.txt","a");
+        
+        fprintf(nounlib, "\n%s",inputs[0]);
+
+        for (int i = 1; i<numOfInputs;i++){
+            fprintf(nounlib, ", ");
+            fprintf(nounlib, inputs[i]);
+        }
+
+        fclose(nounlib);
+    } else{
+
+        printf("Please give addn input in form: <article> <noun> <plural article> <plural ending>. Thanks!\n");
+
     }
-
-
     
-
-
-
-    fclose(lanlib);
 }
 
 void verb(){
@@ -43,11 +47,6 @@ void noun(){
 
 
 int main(int argc, char *argv[]){
-
-    //for (int i=0;i<argc;i++){
-    //    printf("%c",*argv[i]);
-//
-  //  }
 
 
     if (argc == 1){
