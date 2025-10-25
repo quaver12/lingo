@@ -10,6 +10,8 @@ void addv(){
 }
 
 void addn(char *inputs[], int numOfInputs){
+    
+    // Adds entered noun to nounlib files, formatted correctly
 
     if (numOfInputs == 4){
 
@@ -39,12 +41,24 @@ void verb(){
 }
 
 void noun(){
+
+    // Tests you on random noun
+
     printf("noun()\n");
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
-
-
-
-
 
 int main(int argc, char *argv[]){
 
