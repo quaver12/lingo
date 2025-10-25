@@ -13,7 +13,7 @@ void addn(char *inputs[], int numOfInputs){
     
     // Adds entered noun to nounlib files, formatted correctly
 
-    if (numOfInputs == 4){
+    if (numOfInputs == 5){
 
         FILE *nounlib;
         nounlib = fopen("nounslib.txt","a");
@@ -26,11 +26,11 @@ void addn(char *inputs[], int numOfInputs){
         }
 
         fclose(nounlib);
-        printf("Successfully added '%s %s' to noun library!\n", inputs[0], inputs[1]);
+        printf("Successfully added '%s %s' to noun library!\n", inputs[1], inputs[2]);
 
     } else{
 
-        printf("Please give addn input in form: <article> <noun> <plural article> <plural ending>. Thanks!\n");
+        printf("Please give addn input in form: <english word> <article> <noun> <plural article> <plural ending>. Thanks!\n");
 
     }
     
