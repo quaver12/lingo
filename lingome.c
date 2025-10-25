@@ -2,6 +2,26 @@
 #include <string.h>
 #include <stdlib.h>
 
+int countFileLines(char *fileName){
+    
+    FILE *readInFile;
+    readInFile = fopen(fileName,"r");
+
+    int count = 0, lines = 0, character;
+
+    while (character != EOF){
+        character = fgetc(readInFile);
+        if (character == '\n'){
+            lines++;
+        }
+        count++;
+    }
+
+    fclose(readInFile);
+
+    return lines;
+}
+
 void hitme(){
     printf("hitme()\n");
 }
@@ -45,10 +65,14 @@ void noun(){
 
     // Tests you on random noun
 
+    printf("The file has %d lines",countFileLines("nounslib.txt"));
+
+
+
     printf("noun()\n");
 
     FILE *nounlib;
-    nounlib = fopen("nounslib.txt","w");
+    nounlib = fopen("nounslib.txt","r");
     
     int linesintxtfile = 2;
     srand(2);
