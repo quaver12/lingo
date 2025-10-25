@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void hitme(){
     printf("hitme()\n");
@@ -46,16 +47,14 @@ void noun(){
 
     printf("noun()\n");
 
+    FILE *nounlib;
+    nounlib = fopen("nounslib.txt","w");
+    
+    int linesintxtfile = 2;
+    srand()
+    int randnum = rand() % linesintxtfile;
 
-
-
-
-
-
-
-
-
-
+    fclose(nounlib);
 
 
 }
