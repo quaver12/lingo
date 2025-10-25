@@ -11,12 +11,10 @@ void addv(){
 
 void addn(char *inputs[], int numOfInputs){
 
-    printf("addn\n");
-
     if (numOfInputs == 4){
 
         FILE *nounlib;
-        nounlib = fopen("nounlibrary.txt","a");
+        nounlib = fopen("nounslib.txt","a");
         
         fprintf(nounlib, "\n%s",inputs[0]);
 
@@ -26,6 +24,8 @@ void addn(char *inputs[], int numOfInputs){
         }
 
         fclose(nounlib);
+        printf("Successfully added '%s %s' to noun library!\n", inputs[0], inputs[1]);
+
     } else{
 
         printf("Please give addn input in form: <article> <noun> <plural article> <plural ending>. Thanks!\n");
@@ -59,14 +59,12 @@ int main(int argc, char *argv[]){
 
         char *input[10];
 
-        // shift argc left 2 so it is only the words to be added to file
-        // save that as 'input'
+        // make array of only relevant input words from argv
         for (int i = 0; i < argc-2; i++){
             // sets pointers in input array to the location of relevant pointers in argv
             input[i] = argv[i+2];
         }
 
-        //printf("%c",*input[1]);
         addn(input, argc-2);
 
     } else if (strcmp(argv[1],"verb")==0){
@@ -74,6 +72,8 @@ int main(int argc, char *argv[]){
 
     } else if (strcmp(argv[1],"noun")==0){
         noun();
+    } else{
+        printf("Unknown lingome command. Please try again.\n");
     }
 
 
