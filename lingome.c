@@ -51,7 +51,7 @@ void noun(){
     nounlib = fopen("nounslib.txt","w");
     
     int linesintxtfile = 2;
-    srand()
+    srand(2);
     int randnum = rand() % linesintxtfile;
 
     fclose(nounlib);
