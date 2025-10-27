@@ -3,8 +3,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+// ------------------------------------------ General Utility Functions ------------------------------------------
+
 int countFileLines(char *fileName){
-    
+// Counts numbers of lines in txt file by counting number of '\n's used.
+
     FILE *readInFile;
     readInFile = fopen(fileName,"r");
 
@@ -22,6 +25,18 @@ int countFileLines(char *fileName){
 
     return lines;
 }
+
+char *arrayOfLine(int lineNum, char *fileName){
+// Returns an array of each element on the line 'lineNum' of csv-formatted file 'fileName'.
+// Does not return commas.
+
+
+
+
+}
+
+
+// ------------------------------------------ Application Options ------------------------------------------
 
 void hitme(){
     printf("hitme()\n");
@@ -94,6 +109,8 @@ void noun(){
 
 
 }
+
+// ------------------------------------------ Main ------------------------------------------
 
 int main(int argc, char *argv[]){
 
