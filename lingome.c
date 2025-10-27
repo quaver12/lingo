@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 int countFileLines(char *fileName){
     
@@ -65,18 +66,29 @@ void noun(){
 
     // Tests you on random noun
 
-    printf("The file has %d lines",countFileLines("nounslib.txt"));
-
-
-
-    printf("noun()\n");
-
     FILE *nounlib;
     nounlib = fopen("nounslib.txt","r");
     
-    int linesintxtfile = 2;
-    srand(2);
-    int randnum = rand() % linesintxtfile;
+    srand(time(NULL));
+    int randLine = rand() % countFileLines("nounslib.txt") + 1;
+
+    char linearray[10];
+
+    if (rand()%2==0){
+        // test on english word -- > german
+
+        printf("Was ist '%s' im Deustch? ",linearray);
+
+
+
+
+    }else{
+        // test on german word -- english
+    }
+
+
+
+
 
     fclose(nounlib);
 
