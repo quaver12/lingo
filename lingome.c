@@ -27,34 +27,6 @@ int countFileLines(char *fileName){
     return lines;
 }
 
-// Returns an array of each element in 1 line of a csv file
-char *arrayOfLine(int lineNum, char *fileName){
-    // Returns an array of each element on the line 'lineNum' of csv-formatted file 'fileName'.
-    FILE *readInFile;
-    readInFile = fopen(fileName,"r");
-    
-    char *lineArray[5];
-    char tempWordHolder[20];
-    int letterCount = 0, wordCount = 0;
-    char character;
-
-    while (character != EOF){
-        character = fgetc(readInFile);
-        if (character == ','){
-        //write tempwordholder to linearray at location wordcount    
-            //linearray[wordCount]    
-
-            wordCount++;
-            letterCount = 0;            
-        }
-        //write character to tempwordholder at location lettercount
-        letterCount++;
-    }
-    
-    return lineArray;
-}
-
-
 // ------------------------------------------ Application Options ------------------------------------------
 
 // Random question
@@ -108,20 +80,31 @@ void verb(){
 // Incomplete
 void noun(){
 
+    //printf("%s",arrayOfLine);
     
-
     FILE *nounlib;
     nounlib = fopen("nounslib.txt","r");
     
     srand(time(NULL));
     int randLine = rand() % countFileLines("nounslib.txt") + 1;
 
-    char linearray[10];
+    char preLineArray[41];
+
+    //char *lineArray[5];
+
+    int n = 40;
+    for (int i = 0; i < randLine;i++){
+        fgets(preLineArray,n, nounlib);
+    }
+
+
+    printf("%s",preLineArray);
+
 
     if (rand()%2==0){
         // test on english word -- > german
 
-        printf("Was ist '%s' im Deustch? ",linearray);
+        //printf("Was ist '%s' im Deustch? ",linearray);
 
 
 
