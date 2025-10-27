@@ -99,19 +99,31 @@ void noun(){
         itemisedLineArray[i] = strtok(NULL,",");
     }
 
+    int ranQuestion = rand()%3;
+    int right = 0;
+    char *input;
 
-    if (rand()%2==0){
+    if (ranQuestion == 0){
         // test on english word -- > german
 
-        printf("Was ist '%s' im Deustch? ",itemisedLineArray[0]);
+        while (right != 1){
+            printf("What is the plural article and ending of '%s' in german? ",itemisedLineArray[0]);
+
+        }
 
 
-
-
+    }else if (ranQuestion == 1){
+        while (right != 1){
+            printf("What is '%s' in german? (singular) ",itemisedLineArray[0]);
+            scanf("%s",&input);
+            //if (input == )
+        }
 
     }else{
         // test on german word -- english
-        printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
+        while (right != 1){
+            printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
+        }
     }
 
 
