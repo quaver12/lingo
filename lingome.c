@@ -80,37 +80,38 @@ void verb(){
 // Incomplete
 void noun(){
 
-    //printf("%s",arrayOfLine);
-    
     FILE *nounlib;
     nounlib = fopen("nounslib.txt","r");
     
     srand(time(NULL));
     int randLine = rand() % countFileLines("nounslib.txt") + 1;
 
-    char preLineArray[41];
-
-    //char *lineArray[5];
+    char stringOfLine[41];
+    char *itemisedLineArray[5];
 
     int n = 40;
     for (int i = 0; i < randLine;i++){
-        fgets(preLineArray,n, nounlib);
+        fgets(stringOfLine,n, nounlib);
     }
 
-
-    printf("%s",preLineArray);
+    itemisedLineArray[0] = strtok(stringOfLine,",");
+    for (int i = 1 ; i < 5 ; i++){
+        itemisedLineArray[i] = strtok(NULL,",");
+    }
 
 
     if (rand()%2==0){
         // test on english word -- > german
 
-        //printf("Was ist '%s' im Deustch? ",linearray);
+        printf("Was ist '%s' im Deustch? ",itemisedLineArray[0]);
+
 
 
 
 
     }else{
         // test on german word -- english
+        printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
     }
 
 
