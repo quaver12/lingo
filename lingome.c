@@ -5,8 +5,9 @@
 
 // ------------------------------------------ General Utility Functions ------------------------------------------
 
+// Returns number of lines in a .txt file
 int countFileLines(char *fileName){
-// Counts numbers of lines in txt file by counting number of '\n's used.
+    // Counts numbers of lines in txt file by counting number of '\n's used.
 
     FILE *readInFile;
     readInFile = fopen(fileName,"r");
@@ -26,29 +27,53 @@ int countFileLines(char *fileName){
     return lines;
 }
 
+// Returns an array of each element in 1 line of a csv file
 char *arrayOfLine(int lineNum, char *fileName){
-// Returns an array of each element on the line 'lineNum' of csv-formatted file 'fileName'.
-// Does not return commas.
+    // Returns an array of each element on the line 'lineNum' of csv-formatted file 'fileName'.
+    FILE *readInFile;
+    readInFile = fopen(fileName,"r");
+    
+    char *lineArray[5];
+    char tempWordHolder[20];
+    int letterCount = 0, wordCount = 0;
+    char character;
 
+    while (character != EOF){
+        character = fgetc(readInFile);
+        if (character == ','){
+        //write tempwordholder to linearray at location wordcount    
+            //linearray[wordCount]    
 
-
-
+            wordCount++;
+            letterCount = 0;            
+        }
+        //write character to tempwordholder at location lettercount
+        letterCount++;
+    }
+    
+    return lineArray;
 }
 
 
 // ------------------------------------------ Application Options ------------------------------------------
 
+// Random question
+// Incomplete
 void hitme(){
     printf("hitme()\n");
 }
 
+// Adds entered verb to file library.
+// Incomplete
 void addv(){
     printf("addv()\n");
 }
 
+// Adds entered noun to nounlib files, formatted correctly
+// Working
 void addn(char *inputs[], int numOfInputs){
     
-    // Adds entered noun to nounlib files, formatted correctly
+    
 
     if (numOfInputs == 5){
 
@@ -58,7 +83,7 @@ void addn(char *inputs[], int numOfInputs){
         fprintf(nounlib, "\n%s",inputs[0]);
 
         for (int i = 1; i<numOfInputs;i++){
-            fprintf(nounlib, ", ");
+            fprintf(nounlib, ",");
             fprintf(nounlib, inputs[i]);
         }
 
@@ -73,13 +98,17 @@ void addn(char *inputs[], int numOfInputs){
     
 }
 
+// Tests you on random verb
+// Incomplete
 void verb(){
     printf("verb()\n");
 }
 
+// Tests you on random noun
+// Incomplete
 void noun(){
 
-    // Tests you on random noun
+    
 
     FILE *nounlib;
     nounlib = fopen("nounslib.txt","r");
@@ -122,7 +151,7 @@ int main(int argc, char *argv[]){
         addv();
 
     } else if (strcmp(argv[1],"addn")==0){
-
+        //prep inputs for addn()
         char *input[10];
 
         // make array of only relevant input words from argv
