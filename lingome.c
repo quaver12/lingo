@@ -117,7 +117,7 @@ void noun(){
     }
 
     int ranQuestion = rand()%3;
-    int right = 0 ;
+    int progress = 0 ;
     char yn[2];
 
     //just in to force option 3 atm
@@ -135,7 +135,7 @@ void noun(){
         }
         */
     }else if (ranQuestion == 1){
-        while (right != 1){
+        while (progress != 1){
             printf("What is '%s' in german? (singular) ",itemisedLineArray[0]);
             //scanf("%s",&input);
             //if (input == )
@@ -144,29 +144,31 @@ void noun(){
     }else{
 
         // test on german word --> english
-        while (right != 1){
+        do {
 
             char input1[30], input2[30];
             
-
-            printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
+            if (progress == 0){
+                printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
+                progress = 1;
+            } else {
+                printf("Not quite, try again (type 'get lost' to quit): ");
+            }
             scanf("%s %s",&input1, &input2);
             
             //printf ("%s\n", input1);
             //printf ("%s\n", input2);
-
+            if (strcmp(input1,"get") == 0 && strcmp(input2,"lost") == 0){
+                
+                progress = 2;
+            }
             if ((strcmp(input1,"the")==0) && (strcmp(input2,itemisedLineArray[0])==0)){
                 printf("Perfect! Well done :)\n");
-                    right = 1;
+                    progress = 2;
             
-            }else{
-                printf("Not quite! Want to try again? y/n:");
-                scanf("%s",&yn);
-                if (yn=="n"){
-                    right = 1;
-                }
-            }  
+            } 
         }
+        while (progress != 2);
     }
 
     fclose(nounlib);
