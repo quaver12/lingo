@@ -121,8 +121,8 @@ void noun(){
     int progress = 0;
     char yn[2];
 
-    //just in to force option 3 atm
-    ranQuestion = 0;
+    //use to force specific questions
+    //ranQuestion = 1;
 
 
     if (ranQuestion == 0){
@@ -151,11 +151,28 @@ void noun(){
         while (progress != 2);
 
     }else if (ranQuestion == 1){
-        while (progress != 1){
-            printf("What is '%s' in german? (singular) ",itemisedLineArray[0]);
-            //scanf("%s",&input);
-            //if (input == )
+        do {
+
+            char input1[30], input2[30];
+            
+            if (progress == 0){
+                printf("What is 'the %s' in german? (singular) ",itemisedLineArray[0]);
+                progress = 1;
+            } else {
+                printf("Not quite, try again (type 'get lost' to quit): ");
+            }
+
+            scanf("%s %s",input1, input2);
+
+            if (strcmp(input1,"get") == 0 && strcmp(input2,"lost") == 0){               
+                progress = 2;
+            }else if ((strcmp(input1,itemisedLineArray[1])==0) && (strcmp(input2,itemisedLineArray[2])==0)){
+                printf("Perfect! Well done :)\n");
+                progress = 2;
+            
+            } 
         }
+        while (progress != 2);
 
     }else{
 
