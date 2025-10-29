@@ -113,27 +113,43 @@ void noun(){
 
     itemisedLineArray[0] = strtok(stringOfLine,",");
     for (int i = 1 ; i < 5 ; i++){
-        itemisedLineArray[i] = strtok(NULL,",");
+        itemisedLineArray[i] = strtok(NULL,",\n");
     }
 
+
     int ranQuestion = rand()%3;
-    int progress = 0 ;
+    int progress = 0;
     char yn[2];
 
     //just in to force option 3 atm
-    ranQuestion = 99;
-
+    ranQuestion = 0;
 
 
     if (ranQuestion == 0){
         // test on english word -- > german
-        printf("What is the plural article and ending of '%s' in german? ",itemisedLineArray[0]);
-        /*
-        while (right != 1){
-            printf("What is the plural article and ending of '%s' in german? ",itemisedLineArray[0]);
+        do {
 
+            char input1[30], input2[30];
+            
+            if (progress == 0){
+                printf("What is the plural article and ending for 'the %s' in german? ",itemisedLineArray[0]);
+                progress = 1;
+            } else {
+                printf("Not quite, try again (type 'get lost' to quit): ");
+            }
+
+            scanf("%s %s",input1, input2);
+
+            if (strcmp(input1,"get") == 0 && strcmp(input2,"lost") == 0){               
+                progress = 2;
+            }else if ((strcmp(input1,itemisedLineArray[3])==0) && (strcmp(input2,itemisedLineArray[4])==0)){
+                printf("Perfect! Well done :)\n");
+                progress = 2;
+            
+            } 
         }
-        */
+        while (progress != 2);
+
     }else if (ranQuestion == 1){
         while (progress != 1){
             printf("What is '%s' in german? (singular) ",itemisedLineArray[0]);
@@ -144,6 +160,9 @@ void noun(){
     }else{
 
         // test on german word --> english
+        // progress = 0 at start
+        // progress = 1 for subsequent attempts
+        // progress = 2 for completion/quit
         do {
 
             char input1[30], input2[30];
@@ -154,17 +173,14 @@ void noun(){
             } else {
                 printf("Not quite, try again (type 'get lost' to quit): ");
             }
-            scanf("%s %s",&input1, &input2);
-            
-            //printf ("%s\n", input1);
-            //printf ("%s\n", input2);
-            if (strcmp(input1,"get") == 0 && strcmp(input2,"lost") == 0){
-                
+
+            scanf("%s %s",input1, input2);
+
+            if (strcmp(input1,"get") == 0 && strcmp(input2,"lost") == 0){               
                 progress = 2;
-            }
-            if ((strcmp(input1,"the")==0) && (strcmp(input2,itemisedLineArray[0])==0)){
+            } else if ((strcmp(input1,"the")==0) && (strcmp(input2,itemisedLineArray[0])==0)){
                 printf("Perfect! Well done :)\n");
-                    progress = 2;
+                progress = 2;
             
             } 
         }
