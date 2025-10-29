@@ -1,1 +1,1 @@
-Small CLI program for improving langauge vocabulary - personal project for German Minor.
+Small CLI program for improving german language vocabulary - personal project for Uni Minor.
