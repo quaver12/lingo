@@ -3,6 +3,26 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+/*
+------------------------------------------ To do list ------------------------------------------
+
+    - Complete addn and noun by 29/10
+    - Complete addv and verb by the end of the week
+    - When both complete, post to github
+
+
+    - noun():
+        -   german ---> english questions
+        -   english ---> german questions
+        -   plural for both?
+        -   let user input be non-case-sensitive
+*/
+
+
+
+
+
 // ------------------------------------------ General Utility Functions ------------------------------------------
 
 // Returns number of lines in a .txt file
@@ -99,10 +119,10 @@ void noun(){
     int ranQuestion = rand()%3;
     int right = 0 ;
     char yn[2];
-    
 
     //just in to force option 3 atm
     ranQuestion = 99;
+
 
 
     if (ranQuestion == 0){
@@ -126,7 +146,8 @@ void noun(){
         // test on german word --> english
         while (right != 1){
 
-            char input1[600], input2[600];
+            char input1[30], input2[30];
+            
 
             printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
             scanf("%s %s",&input1, &input2);
@@ -183,7 +204,6 @@ int main(int argc, char *argv[]){
     } else{
         printf("Unknown lingome command. Please try again.\n");
     }
-
 
     return 0;
 }
