@@ -45,8 +45,6 @@ void addv(){
 // Working
 void addn(char *inputs[], int numOfInputs){
     
-    
-
     if (numOfInputs == 5){
 
         FILE *nounlib;
@@ -67,7 +65,6 @@ void addn(char *inputs[], int numOfInputs){
         printf("Please give addn input in form: <english word> <article> <noun> <plural article> <plural ending>. Thanks!\n");
 
     }
-    
 }
 
 // Tests you on random verb
@@ -100,38 +97,58 @@ void noun(){
     }
 
     int ranQuestion = rand()%3;
-    int right = 0;
-    char *input;
+    int right = 0 ;
+    char yn[2];
+    
+
+    //just in to force option 3 atm
+    ranQuestion = 99;
+
 
     if (ranQuestion == 0){
         // test on english word -- > german
-
+        printf("What is the plural article and ending of '%s' in german? ",itemisedLineArray[0]);
+        /*
         while (right != 1){
             printf("What is the plural article and ending of '%s' in german? ",itemisedLineArray[0]);
 
         }
-
-
+        */
     }else if (ranQuestion == 1){
         while (right != 1){
             printf("What is '%s' in german? (singular) ",itemisedLineArray[0]);
-            scanf("%s",&input);
+            //scanf("%s",&input);
             //if (input == )
         }
 
     }else{
-        // test on german word -- english
+
+        // test on german word --> english
         while (right != 1){
+
+            char input1[600], input2[600];
+
             printf("Was ist '%s %s' im Englisch? ",itemisedLineArray[1],itemisedLineArray[2]);
+            scanf("%s %s",&input1, &input2);
+            
+            //printf ("%s\n", input1);
+            //printf ("%s\n", input2);
+
+            if ((strcmp(input1,"the")==0) && (strcmp(input2,itemisedLineArray[0])==0)){
+                printf("Perfect! Well done :)\n");
+                    right = 1;
+            
+            }else{
+                printf("Not quite! Want to try again? y/n:");
+                scanf("%s",&yn);
+                if (yn=="n"){
+                    right = 1;
+                }
+            }  
         }
     }
 
-
-
-
-
     fclose(nounlib);
-
 
 }
 
